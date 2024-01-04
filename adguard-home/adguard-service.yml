@@ -19,4 +19,4 @@ spec:
     port: 53
     targetPort: 53
     name: dns
-  type: LoadBalancer
+  type: ClusterIP
