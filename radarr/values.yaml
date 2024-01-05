@@ -94,7 +94,7 @@ affinity: {}
 persistence:
   enabled: true
   storageClass: "longhorn-bbq"
-  accessMode: ReadWriteOnce
+  accessMode: ReadWriteMany
   size: 800Mi
   # if you need any additional volumes, you can define them here
   additionalVolumes: []
