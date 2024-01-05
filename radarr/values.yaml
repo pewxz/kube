@@ -17,6 +17,7 @@ deployment:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+namespace: media
 
 serviceAccount:
   # Specifies whether a service account should be created
