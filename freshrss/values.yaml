@@ -58,13 +58,10 @@ affinity: {}
 
 persistence:
   enabled: true
-  ## If defined, storageClassName: <storageClass>
-  ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  ## If undefined (the default) or set to null, no storageClassName spec is
-  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack)
-  ##
-  storageClassName: "longhorn-bbq"
-  accessModes:
-    - ReadWriteOnce
-  size: 1Gi
+  storageClass: "longhorn-bbq"
+  accessMode: ReadWriteOnce
+  size: 1G
+  # if you need any additional volumes, you can define them here
+  additionalVolumes: []
+  # if you need any additional volume mounts, you can define them here
+  additionalMounts: []
