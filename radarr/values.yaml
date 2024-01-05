@@ -93,10 +93,13 @@ affinity: {}
 
 persistence:
   enabled: true
-  existingClaim: "my-longhorn-pvc"
-  mountPath: "/download"
+  storageClass: "longhorn-bbq"
   accessMode: ReadWriteOnce
   size: 800Mi
+  # if you need any additional volumes, you can define them here
+  additionalVolumes: []
+  # if you need any additional volume mounts, you can define them here
+  additionalMounts: []
 
 env:
   PUID: "1000"
