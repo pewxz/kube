@@ -70,7 +70,7 @@ spec:
         - name: putio
           image: baymaxx/putio-dlrr
           volumeMounts:
-          - name: download-pvc
+          - name: {{ .Values.persistence.existingClaim | default (include "radarr.fullname" .) }}
             mountPath: /download
       {{- with .Values.nodeSelector }}
       nodeSelector:
