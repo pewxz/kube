@@ -67,6 +67,11 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: putio
+          image: baymaxx/putio-dlrr
+          volumeMounts:
+          - name: download-pvc
+            mountPath: /download
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
