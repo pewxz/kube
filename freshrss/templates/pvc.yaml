@@ -1,0 +1,27 @@
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ template "freshrss.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "freshrss.name" . }}
+    helm.sh/chart: {{ include "freshrss.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- with .Values.persistence.annotations  }}
+  annotations:
+  {{- if .Values.persistence.storageClassName }}
+    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.storageClassName | quote }}
+  {{- else }}
+    volume.alpha.kubernetes.io/storage-class: default
+  {{- end }}
+  {{- end }}
+spec:
+  accessModes:
+    {{- range .Values.persistence.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }}
+{{- end -}}
