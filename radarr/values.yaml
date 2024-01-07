@@ -96,14 +96,6 @@ persistence:
   storageClass: "longhorn-bbq"
   accessMode: ReadWriteOncePod
   size: 800Mi
-  additionalVolumes:
-    - name: download-volume
-      persistentVolumeClaim:
-        claimName: download-pvc
-        readOnly: false
-  additionalMounts:
-    - name: download-volume
-      mountPath: /download
 
 env:
   PUID: "1000"
